@@ -7,6 +7,7 @@ pipeline {
         DB_PASS = "sonar123"
         DOCKER_NETWORK = "bindnamed_jenkins_network"
         SONAR_URL = "http://sonarqube:9000"
+        SONAR_AUTH_TOKEN = "squ_d7ed6d0c10446be8287b01b2660dada678e6469a"
     }
 
     stages {
@@ -15,13 +16,17 @@ pipeline {
             agent any
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/ferilauw/bank-microservices-maven.git'
+                    url: 'https://github.com/zakimudzakirh/bank-microservices-maven.git'
+                
+                stash name: 'source', includes: '*/'
             }
         }
 
         stage('Build & Test - Account Service') {
             agent { label 'agent-1' }
             steps {
+                unstash 'source'
+                
                 dir('account-service') {
                     sh 'mvn clean test'
                 }
@@ -31,6 +36,8 @@ pipeline {
         stage('Build & Test - Transaction Service') {
             agent any
             steps {
+                unstash 'source'
+                
                 dir('transaction-service') {
                     sh 'mvn clean test'
                 }
