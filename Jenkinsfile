@@ -98,7 +98,7 @@ pipeline {
                     -url=$DB_URL \
                     -user=$DB_USER \
                     -password=$DB_PASS \
-                    -locations=filesystem:$WORKSPACE/account-service/db/migration \
+                    -locations=filesystem:/var/jenkins_home/workspace/bank-microservices-maven/account-service/db/migration \
                     migrate
                     '''
                 }
@@ -119,7 +119,7 @@ pipeline {
                     -url=$DB_URL \
                     -user=$DB_USER \
                     -password=$DB_PASS \
-                    -locations=filesystem:$WORKSPACE/transaction-service/db/migration \
+                    -locations=filesystem:/var/jenkins_home/workspace/bank-microservices-maven/transaction-service/db/migration \
                     repair
                     '''
 
@@ -133,7 +133,7 @@ pipeline {
                     -url=$DB_URL \
                     -user=$DB_USER \
                     -password=$DB_PASS \
-                    -locations=filesystem:$WORKSPACE/transaction-service/db/migration \
+                    -locations=filesystem:/var/jenkins_home/workspace/bank-microservices-maven/transaction-service/db/migration \
                     migrate
                     '''
                 }
