@@ -110,20 +110,6 @@ pipeline {
             steps {
                 dir('transaction-service') {
                     sh '''
-                    echo "=== FIX CHECKSUM ==="
-
-                    docker run --rm \
-                    --network $DOCKER_NETWORK \
-                    --volumes-from jenkins \
-                    flyway/flyway \
-                    -url=$DB_URL \
-                    -user=$DB_USER \
-                    -password=$DB_PASS \
-                    -locations=filesystem:/var/jenkins_home/workspace/bank-microservices-maven/transaction-service/db/migration \
-                    repair
-                    '''
-
-                    sh '''
                     echo "=== RUN FLYWAY TRANSACTION ==="
 
                     docker run --rm \
