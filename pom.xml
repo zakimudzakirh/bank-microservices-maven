@@ -1,0 +1,11 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+<modelVersion>4.0.0</modelVersion>
+<groupId>bank</groupId>
+<artifactId>bank-microservices</artifactId>
+<version>1.0</version>
+<packaging>pom</packaging>
+<modules>
+    <module>account-service</module>
+    <module>transaction-service</module>
+</modules>
+</project>
